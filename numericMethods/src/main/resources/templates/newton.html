@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Método de Newton-Raphson</title>
+</head>
+<body>
+    <h1>Método de Newton-Raphson</h1>
+    <form action="/newton" method="post">
+        <label for="function">Función:</label>
+        <input type="text" id="function" name="function" placeholder="Ejemplo: x^2-4" required><br><br>
+
+        <label for="startPoint">Punto inicial:</label>
+        <input type="number" step="any" id="startPoint" name="startPoint" required><br><br>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div th:if="${result != null}">
+        <h2>Resultado:</h2>
+        <p>La raíz calculada es: <span th:text="${result}"></span></p>
+        <p>Función ingresada: <span th:text="${function}"></span></p>
+        <p>Punto inicial: <span th:text="${startPoint}"></span></p>
+    </div>
+
+    <div th:if="${error != null}">
+        <h2>Error:</h2>
+        <p th:text="${error}"></p>
+    </div>
+</body>
+</html>
